@@ -7,7 +7,7 @@ public enum enumSizes {
     private String rozmiar;
 
     enumSizes(String a) {
-        this.rozmiar=a;
+        this.rozmiar = a;
     }
 
     public String getRozmiar() {

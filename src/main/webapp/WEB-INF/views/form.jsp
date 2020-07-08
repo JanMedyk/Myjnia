@@ -13,16 +13,25 @@
     <title>Title</title>
 </head>
 <body>
-<form method="post" action="/">
-<input type="text" name="nazwaAuta">
+
+<form method="post" action="${pageContext.request.contextPath}/">
+    <label>marka auta</label>
+    <input type="text" name="nazwaAuta">
+
+    <label>Numer rejestrracyjny </label>
     <input type="text" name="nrRej">
+
+    <label> Rozmiar samochodu</label>
     <select name="rozmiar">
-        <c:forEach items="${enumSizes.getRozmiar}" var="a">
+        <c:forEach items="<%=enumSizes.values()%>" var="a">
 
-        <option value="a">a</option>
+        <option value="${a}">"${a}"</option>
 
-            </c:forEach>
-
+        </c:forEach>
+            <input type='checkbox' name="usluga" value="mycie">Mycie samochodu
+            <input type='checkbox' name="usluga" value="pranie">Pranie tapicerki
+            <input type='checkbox' name="usluga" value="lakier">Korekta Lakieru
+            <input type="submit">
 </form>
 </body>
 </html>
