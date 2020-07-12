@@ -18,7 +18,7 @@
     <label>marka auta</label>
     <input type="text" name="nazwaAuta">
 
-    <label>Numer rejestrracyjny </label>
+    <label>Numer rejestracyjny </label>
     <input type="text" name="nrRej">
 
     <label> Rozmiar samochodu</label>
@@ -28,9 +28,9 @@
         <option value="${a}">"${a}"</option>
 
         </c:forEach>
-            <input type='checkbox' name="usluga" value="mycie">Mycie samochodu
-            <input type='checkbox' name="usluga" value="pranie">Pranie tapicerki
-            <input type='checkbox' name="usluga" value="lakier">Korekta Lakieru
+            <input type='checkbox' name="uslugi" value="mycie">Mycie samochodu
+            <input type='checkbox' name="uslugi" value="pranie">Pranie tapicerki
+            <input type='checkbox' name="uslugi" value="lakier">Korekta Lakieru
             <input type="submit">
 </form>
 </body>

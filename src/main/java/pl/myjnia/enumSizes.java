@@ -6,8 +6,8 @@ public enum enumSizes {
     Hatchban("mały"), Compakt("mały"), Sedan("sredni"), Combi("sredni"), SUV("duzy"), Pickup("duzy"), Van("van");
     private String rozmiar;
 
-    enumSizes(String a) {
-        this.rozmiar = a;
+    enumSizes(String rozmiar) {
+        this.rozmiar = rozmiar;
     }
 
     public String getRozmiar() {
