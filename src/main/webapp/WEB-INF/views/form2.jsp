@@ -22,14 +22,13 @@
 <form method="post" action="${pageContext.request.contextPath}/form2">
     <table>
         <tr>
-            <th>Usługa </th>
+            <th>Usługa</th>
             <th colspan="5">Cena</th>
         </tr>
 
 
-
         <c:if test="${mycie!=null}">
-            
+
 
             <tr>
                 <td>Mycie komplet</td>
@@ -106,9 +105,9 @@
                 </td>
                 <td hidden><label>
                     <input type="checkbox" hidden checked="checked" name="niewidzialnaWycieraczka" value="0">
-                </label> </td>
+                </label></td>
                 <td><label>
-                    <input type="checkbox"  name="osadMeteliczny" value="${cenyMycie.osadmetaliczny}">
+                    <input type="checkbox" name="osadMetaliczny" value="${cenyMycie.osadmetaliczny}">
                 </label>Osad meteliczny ${cenyMycie.osadmetaliczny}zł
                 </td>
                 <td hidden><label>
@@ -143,17 +142,29 @@
                     <input type="checkbox" name="jednoKrzeslo" value="50">
                 </label> Pranie jednego fotela 50 zł
                 </td>
+                <td hidden><label>
+                    <input type="checkbox" checked name="jednoKrzeslo" value="0">
+                </label>
+                </td>
                 <td><label>
                     <input type="checkbox" name="FotelPrzod" value="100">
+                </label> Pranie foteli z przodu 100 zł
+                </td>
+                <td hidden><label>
+                    <input type="checkbox" checked name="FotelPrzod" value="0">
                 </label> Pranie foteli z przodu 100 zł
                 </td>
                 <td><label>
                     <input type="checkbox" name="FotelTyl" value="100">
                 </label> Pranie foteli z tyłu 100 zł
                 </td>
+                <td hidden><label>
+                    <input type="checkbox" checked name="FotelTyl" value="0">
+                </label> Pranie foteli z tyłu 100 zł
+                </td>
             </tr>
             <tr>
-                <td>Pranie tapicerki skórzanej</td>
+                <td>Kosmetyka, czysczenie i impregnacja tapicerki skórzanej</td>
                 <td>
                     <label>
                         <select name="TapicerkaSkorzana">
@@ -177,6 +188,11 @@
                     <input type="checkbox" name="onestep" value="${cenyLakier.oneStep}">
                 </label>Korekta Lakieru One Step -${cenyLakier.oneStep}zł
                 </td>
+                <td hidden><label>
+                    <input type="checkbox" checked name="onestep" value="0">
+                </label> Pranie foteli z tyłu 100 zł
+                </td>
+
             </tr>
             <tr>
                 <td>Korekta dwuetapowa</td>
@@ -185,6 +201,11 @@
                 </label>Korekta Lakieru dwu etapowa
                     -${cenyLakier.dwaStep}zł
                 </td>
+                <td hidden><label>
+                    <input type="checkbox" checked name="dwaStep" value="0">
+                </label>
+                </td>
+
             </tr>
             <tr>
                 <td>Korekta trzyetapowa</td>
@@ -192,6 +213,11 @@
                     <input type="checkbox" name="trzyStep" value="${cenyLakier.trzyStep}">
                 </label>Korekta Lakieru 3 etapowa
                     -${cenyLakier.trzyStep}zł
+                </td>
+
+                <td hidden><label>
+                    <input type="checkbox" checked name="trzyStep" value="0">
+                </label>
                 </td>
             </tr>
             <tr>

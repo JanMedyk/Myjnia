@@ -11,10 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Map;
 
 @Controller
-@SessionAttributes({"rozmiar", "nrRej", "nazwaAuta", "uslugi","MycieKomplet","osadMeteliczny","osadZeSmoly","sumaMin","sumaMax"})
+@SessionAttributes({"rozmiar", "nrRej", "onestep", "dwaStep", "PrzedzialMin", "PrzedzialMax", "trzyStep", "TapicerkaSkorzana", "jednoKrzeslo", "FotelPrzod", "FotelTyl", "nazwaAuta", "uslugi", "woskpremium", "niewidzialnaWycieraczka", "MycieKomplet", "MycieWew", "MycieZew", "woskTwardy", "osadMetaliczny", "suma", "osadZeSmoly", "sumaMin", "sumaMax"})
 
 public class FormController {
     @RequestMapping("/")
@@ -42,19 +43,28 @@ public class FormController {
     public String form2(HttpSession session, Model model) {
         String rozmiar = (String) session.getAttribute("rozmiar");
         if (find("mycie", (String[]) session.getAttribute("uslugi"))) {
-            model.addAttribute("mycie", "Mycie");
+//            model.addAttribute("mycie", "Mycie");
             CenyMycie cenyMycie = new CenyMycie(rozmiar);
             model.addAttribute("cenyMycie", cenyMycie);
+            session.setAttribute("mycie", "Mycie");
 
+
+        } else {
+            session.removeAttribute("mycie");
 
         }
         if (find("lakier", (String[]) session.getAttribute("uslugi"))) {
-            model.addAttribute("lakier", "lakier");
+            session.setAttribute("lakier", "lakier");
             CenyLakier cenyLakier = new CenyLakier(rozmiar);
             model.addAttribute("cenyLakier", cenyLakier);
+        } else {
+            session.removeAttribute("lakier");
         }
+
         if (find("pranie", (String[]) session.getAttribute("uslugi"))) {
-            model.addAttribute("pranie", "pranie");
+            session.setAttribute("pranie", "pranie");
+        } else {
+            session.removeAttribute("pranie");
         }
 
 
@@ -64,23 +74,39 @@ public class FormController {
 
     @PostMapping("/form2")
     @ResponseBody
-    public void podsuowanie(@RequestParam Map<String, String> allParams, Model model,HttpServletResponse request) throws IOException {
-                model.addAllAttributes(allParams);
+    public void podsuowanie(@RequestParam Map<String, String> allParams, Model model, HttpServletResponse
+            request, HttpSession session) throws IOException {
 
-               int suma= allParams.values().stream().mapToInt(Integer::parseInt).sum();
-                    int suma2=suma-(Integer.parseInt(allParams.get("PrzedzialMax")+Integer.parseInt(allParams.get("PrzedzialMin"))));
-                    int sumaMin=suma2+Integer.parseInt(allParams.get("PrzedzialMin"));
-                    int sumaMax=suma2+Integer.parseInt(allParams.get("PrzedzialMax"));
-                       model.addAttribute("sumaMin",sumaMin);
-                       model.addAttribute("sumaMax",sumaMax);
+//        allParams.values().removeIf(e->e.isEmpty());
+        model.addAllAttributes(allParams);
 
+
+        int suma = allParams.values().stream().mapToInt(Integer::parseInt).sum();
+        if (session.getAttribute("lakier") != null) {
+            if (Integer.parseInt(allParams.get("PrzedzialMin")) != 0 && Integer.parseInt(allParams.get("PrzedzialMax")) != 0) {
+                int przedzialMin = Integer.parseInt(allParams.get("PrzedzialMin"));
+                int przedzialMax = Integer.parseInt(allParams.get("PrzedzialMax"));
+                int suma2 = suma - przedzialMin - przedzialMax;
+                int sumaMin = suma2 + przedzialMin;
+                int sumaMax = suma2 + przedzialMax;
+                model.addAttribute("PrzedzialMin");
+                model.addAttribute("PrzedzialMax");
+                model.addAttribute("sumaMin", sumaMin);
+                model.addAttribute("sumaMax", sumaMax);
+            }
+            else {
+                model.addAttribute("suma", suma);
+
+        }
+        }
 
         request.sendRedirect("/form3");
 
     }
+
     @RequestMapping("form3")
 
-    public String form3(){
+    public String form3() {
 
         return "form3";
     }
