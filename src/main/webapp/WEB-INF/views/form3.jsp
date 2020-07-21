@@ -9,28 +9,44 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Zlecenie</title>
 </head>
+
+<%--<style>--%>
+<%--    &lt;%&ndash;<style>&ndash;%&gt;--%>
+<%--    &lt;%&ndash;    <%@ include file="/style/styl3.css"%>&ndash;%&gt;--%>
+<%--    /*    table, th, td {*/--%>
+<%--    /*        border: 1px solid black;*/--%>
+<%--    /*    }*/--%>
+
+<%--    /*     body {*/--%>
+<%--    /*         height: 1122px;*/--%>
+<%--    /*         width: 794px;*/--%>
+<%--    /*         !* to centre page on screen*!*/--%>
+<%--    /*         margin-left: auto;*/--%>
+<%--    /*         margin-right: auto;*/--%>
+<%--    /*     }*/--%>
+<%--#table{--%>
+<%--    max-width: 2480px;--%>
+<%--    width:100%;--%>
+<%--}--%>
+<%--#table td{--%>
+<%--    width: auto;--%>
+<%--    overflow: hidden;--%>
+<%--    word-wrap: break-word;--%>
+<%--}--%>
+<%--&lt;%&ndash;</style>&ndash;%&gt;--%>
+
 <style>
-    table, th, td {
-        border: 1px solid black;
-    }
 
-     body {
-         height: 1122px;
-         width: 794px;
-         /* to centre page on screen*/
-         margin-left: auto;
-         margin-right: auto;
-     }
-
-
+<%--    <%@ include file="/style/styl3.css"%>--%>
 </style>
 
 <body>
+<h1>Zlecenie</h1>
+<div class="tbl-header"></div>
+<table cellpadding="0">
 
-<table>
-    <h1>Podsumowanie</h1>
     <tr>
         <th colspan="2">Dane samochodu</th>
     </tr>
@@ -46,8 +62,8 @@
 
     </tr>
     <tr>
-        <td>Rozmiar pojazdu</td>
-        <td>${rozmiar}</td>
+        <td>Rodzaj pojazdu</td>
+        <td>${rozmiarNazwa}</td>
 
     </tr>
     <tr>
@@ -163,6 +179,10 @@
         </td>
 
     </tr>
+    <td>Uwagi</td>
+    <c:if test="${cenaUwagi!=0}">
+    <td>${uwagi} - ${cenaUwagi}</td>
+    </c:if>
         </tr>
 </c:if>
 
@@ -185,12 +205,10 @@
     </tr>
 
 
-    <h1></h1>
+
 
 </table>
-<h2>
 
-</h2>
 
 </body>
 </html>
