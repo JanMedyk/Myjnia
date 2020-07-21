@@ -8,25 +8,40 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-
+<style>
+    <%@ include file="/style/styl22.css"%>
+</style>
 <head>
-    <style>
-        table, th, td {
-            border: 1px solid black;
-        }
-    </style>
-    <title>Title</title>
+    <title>
+        ss
+    </title>
+<%--    <style>--%>
+<%--        table, th, td {--%>
+<%--            border: 1px solid black;--%>
+<%--        }--%>
+
+<%--    </style>--%>
+<%--    <title>Title</title>--%>
 
 </head>
 <body>
 <form method="post" action="${pageContext.request.contextPath}/form2">
-    <table>
+    <h1>Wybór usług</h1>
+    <div class="tbl-header">
+    <table cellpadding="0" border="0">
+        <thead>
         <tr>
             <th>Usługa</th>
             <th colspan="5">Cena</th>
         </tr>
+        </thead>
 
+    </table>
+    </div>
+    <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0">
 
+<tbody>
         <c:if test="${mycie!=null}">
 
 
@@ -47,8 +62,8 @@
                 </label>Duże
                     zabrudzenie ${cenyMycie.dużeZabrudzenie}zł
                 </td>
-                <td hidden><label>
-                    <input type="radio" hidden checked="checked" name="MycieKomplet" value="0">
+                <td><label>
+                    <input type="radio"  checked="checked" name="MycieKomplet" value="0">Brak
                 </label>
                 </td>
             </tr>
@@ -59,8 +74,8 @@
                 </label>Mycie
                     zewnątrz ${cenyMycie.mycieZewnatrz}zł
                 </td>
-                <td hidden><label>
-                    <input type="radio" hidden checked="checked" name="MycieZew" value="0">
+                <td><label>
+                    <input type="radio"  checked="checked" name="MycieZew" value="0">Brak
                 </label>
 
 
@@ -82,8 +97,8 @@
                 </label>Duże
                     zabrudzenie ${cenyMycie.mycieWewnatrzDuze}zł
                 </td>
-                <td hidden><label>
-                    <input type="radio" hidden checked="checked" name="MycieWew" value="0">
+                <td><label>
+                    <input type="radio" checked="checked" name="MycieWew" value="0"> Brak
                 </label>
 
             </tr>
@@ -223,14 +238,26 @@
             <tr>
                 <td>Pełna korekta lakieru</td>
                 <td><label>
-                    <input type="number" value="0" name="PrzedzialMin">
+                    <input type="number"  value="0" name="PrzedzialMin">zł
                 </label> <label>
-                    <input type="number" value="0" name="PrzedzialMax">
+                    <input type="number"  value="0" name="PrzedzialMax">zł
                 </label></td>
             </tr>
         </c:if>
+        <tr>
+            <td>Uwagi</td>
+            <td colspan="2"><label></label>
+                <input type="text" style="width: 300px; height: 200px;"  name="uwagi">
 
-    </table>
+            <input type="number" name="cenaUwagi" value="0">zł</td>
+
+        </tr>
+
+</tbody>
+        </table>
+    </div>
+
+
     <input type="submit" value="dalej">
 </form>
 

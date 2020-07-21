@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.Map;
 
 @Controller
-@SessionAttributes({"rozmiar", "nrRej", "onestep", "dwaStep", "PrzedzialMin", "PrzedzialMax", "trzyStep", "TapicerkaSkorzana", "jednoKrzeslo", "FotelPrzod", "FotelTyl", "nazwaAuta", "uslugi", "woskpremium", "niewidzialnaWycieraczka", "MycieKomplet", "MycieWew", "MycieZew", "woskTwardy", "osadMetaliczny", "suma", "osadZeSmoly", "sumaMin", "sumaMax"})
+@SessionAttributes({"rozmiarNazwa","uwagi","cenaUwagi","rozmiar", "nrRej", "onestep", "dwaStep", "PrzedzialMin", "PrzedzialMax", "trzyStep", "TapicerkaSkorzana", "jednoKrzeslo", "FotelPrzod", "FotelTyl", "nazwaAuta", "uslugi", "woskpremium", "niewidzialnaWycieraczka", "MycieKomplet", "MycieWew", "MycieZew", "woskTwardy", "osadMetaliczny", "suma", "osadZeSmoly", "sumaMin", "sumaMax"})
 
 public class FormController {
     @RequestMapping("/")
@@ -28,7 +28,7 @@ public class FormController {
     @PostMapping("/")
     @ResponseBody
     public void pobranie(HttpServletResponse request, Model model, @RequestParam String rozmiar, @RequestParam String nrRej, @RequestParam String nazwaAuta, @RequestParam String[] uslugi) throws IOException {
-
+        model.addAttribute("rozmiarNazwa",rozmiar);
         model.addAttribute("rozmiar", enumSizes.valueOf(rozmiar).getRozmiar());
         model.addAttribute("nrRej", nrRej);
         model.addAttribute("nazwaAuta", nazwaAuta);
@@ -77,7 +77,10 @@ public class FormController {
     public void podsuowanie(@RequestParam Map<String, String> allParams, Model model, HttpServletResponse
             request, HttpSession session) throws IOException {
 
-//        allParams.values().removeIf(e->e.isEmpty());
+        allParams.values().removeIf(e->e.isEmpty());
+String uwagi=allParams.get("uwagi");
+        model.addAttribute("uwagi",uwagi);
+        allParams.keySet().removeIf(e->e.equals("uwagi"));
         model.addAllAttributes(allParams);
 
 
@@ -104,7 +107,7 @@ public class FormController {
 
     }
 
-    @RequestMapping("form3")
+    @RequestMapping("/form3")
 
     public String form3() {
 

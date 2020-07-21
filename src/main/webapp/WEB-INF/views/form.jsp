@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="pl.myjnia.enumSizes" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <%--
   Created by IntelliJ IDEA.
   User: jan
@@ -10,52 +11,74 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title>Title</title>
+
+
+   <style>
+   <%@ include file="/style/style.css"%>
+   </style>
+
+<title>sss</title>
+
 </head>
 <body>
 
 <h1>FIRMA XYZ</h1>
-<form method="post" action="${pageContext.request.contextPath}/">
+<form id="msform" method="post" action="${pageContext.request.contextPath}/">
 
-    <p><label>marka auta</label></p>
-    <p><label>
-        <input type="text" name="nazwaAuta">
-    </label></p>
+    <fieldset>
+        <h2 class="fs-title">Dane auta</h2>
 
 
-    <p><label>Numer rejestracyjny </label></p>
-    <p><label>
-        <input type="text" name="nrRej">
-    </label></p>
+<%--    <label>marka auta</label>--%>
+<div>
+        <input  placeholder="Marka auta" type="text" name="nazwaAuta">
+</div>
+        <div>
+        <input type="text" placeholder="Nr Rejestracyjny" name="nrRej">
+        </div>
+<%--    <p><label>Numer rejestracyjny </label></p>--%>
+<%--    <p><label>--%>
 
+<%--    </label></p>--%>
 
-    <p><label> Rozmiar samochodu</label></p>
-
+<div>
+    <label> Rodzaj pojazdu</label>
+</div>
+        <div>
         <select name="rozmiar">
             <c:forEach items="<%=enumSizes.values()%>" var="a">
 
             <option value="${a}">${a}</option>></c:forEach>
         </select>
-
-    </p>
-
-
-   <p><label>Usługi</label> </p>
-        <p><input type='checkbox' name="uslugi" value="mycie">
-        <label>Mycie samochodu</label>
+        </div>
 
 
-    <input type='checkbox' name="uslugi" value="pranie">
-        Pranie tapicerki
+<div>
+
+    <h2 class="fs-title">Usługi</h2>
 
 
-    <input type='checkbox' name="uslugi" value="lakier">
-    Korekta Lakieru</p>
+    <label >Mycie
+    <input type='checkbox'  name="uslugi" value="mycie"></label>
+
+
+
+    <label >Pranie tapicerki<input type='checkbox'  name="uslugi" value="pranie"></label>
+
+
+
+    <label> Korekta Lakieru<input type='checkbox'  name="uslugi" value="lakier"></label>
+
+</div>
 <%--    </p>--%>
+        <div>
+            <input type="submit" name="dalej" class="next action-button" value="Wybór usług" />
+        </div>
 
-    <p><input type="submit" value="DALEJ"></p>
-
+    </fieldset>
 
 </form>
+
 </body>
+
 </html>
