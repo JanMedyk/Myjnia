@@ -34,7 +34,7 @@ public class FormController {
         model.addAttribute("nazwaAuta", nazwaAuta);
         model.addAttribute("uslugi", uslugi);
 
-        request.sendRedirect("/form2");
+        request.sendRedirect("/Myjnia3/form2");
 
     }
 
@@ -103,7 +103,7 @@ String uwagi=allParams.get("uwagi");
         }
         }
 
-        request.sendRedirect("/form3");
+        request.sendRedirect("/Myjnia3/form3");
 
     }
 

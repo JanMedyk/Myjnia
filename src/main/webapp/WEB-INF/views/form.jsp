@@ -23,7 +23,7 @@
 <body>
 
 <h1>FIRMA XYZ</h1>
-<form id="msform" method="post" action="${pageContext.request.contextPath}/">
+<form id="msform" method="post" action="/Myjnia3/">
 
     <fieldset>
         <h2 class="fs-title">Dane auta</h2>

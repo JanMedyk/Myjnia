@@ -25,7 +25,7 @@
 
 </head>
 <body>
-<form method="post" action="${pageContext.request.contextPath}/form2">
+<form method="post" action="/Myjnia3/form2">
     <h1>Wybór usług</h1>
     <div class="tbl-header">
     <table cellpadding="0" border="0">
